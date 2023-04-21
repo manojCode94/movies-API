@@ -26,7 +26,6 @@ public class Movie {
     private List<String> backdrops;
 
     //this will be embedded relationship One movies can have many reviews (one to many)
-
     @DocumentReference
     private List<Review> reviewIds;
 

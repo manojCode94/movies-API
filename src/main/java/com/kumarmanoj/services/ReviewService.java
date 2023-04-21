@@ -11,12 +11,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ReviewService {
+//    @Autowired
+//    private ReviewRepository reviewRepository;
+
+    private final ReviewRepository reviewRepository;
+    private final MongoTemplate mongoTemplate;
+
     @Autowired
-    private ReviewRepository reviewRepository;
+    public ReviewService(ReviewRepository reviewRepository, MongoTemplate mongoTemplate) {
+        this.reviewRepository = reviewRepository;
+        this.mongoTemplate = mongoTemplate;
+    }
 
     //This is the other way to perform and talk with the database just like JdbcTemplate
-    @Autowired
-    private MongoTemplate mongoTemplate;
+//    @Autowired
+//    private MongoTemplate mongoTemplate;
 
     public Review createReview(String reviewBody, String imdbId) {
         //insert it to the database to the relevant movie

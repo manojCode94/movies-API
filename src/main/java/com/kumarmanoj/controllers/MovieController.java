@@ -16,8 +16,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "api/v1/movies")
 public class MovieController {
+//    @Autowired
+//    private MovieService movieService;
+    private final MovieService movieService;
+
     @Autowired
-    private MovieService movieService;
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
+
     @GetMapping
     public ResponseEntity<List<Movie>> getAllMovies() {
         List<Movie> movies = movieService.getAllMovies();
